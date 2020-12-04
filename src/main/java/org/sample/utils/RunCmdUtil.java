@@ -1,7 +1,8 @@
 package org.sample.utils;
 
 
-import org.newSite.common.dean.RunCmdResult;
+
+import org.sample.common.bean.RunCmdResult;
 
 import java.io.BufferedReader;
 import java.io.IOException;
