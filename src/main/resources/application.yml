@@ -1,0 +1,21 @@
+server:
+  port: 8544
+  servlet:
+    context-path: /sampleSite
+
+createJarTime: '@build.time@'
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  server:
+    port: 10111
+    servlet:
+      context-path: /
+    ssl:
+      enabled: false
+  endpoint:
+    health:
+      show-details: always
