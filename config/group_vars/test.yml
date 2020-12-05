@@ -1,0 +1,14 @@
+---
+
+##########################
+#
+# 测试参数表
+#
+##########################
+
+test_jar_pre: "SampleSite"
+test_jar_name: "{{ test_jar_pre }}-{{ jar_version }}.jar" 
+
+test_jar_url: "{{ jar_url_pre }}/{{ jar_version }}/{{ test_jar_name }}"
+test_launch_args: "-Dserver.port=8544"
+test_service_port: "8544"

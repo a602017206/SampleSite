@@ -1,0 +1,29 @@
+---
+
+#################################
+#
+# 下载新jar包
+#
+#################################
+
+- name: delete old jar
+  shell: rm -f /app/appuser/{{ jar_pre }}*.jar
+
+- name: copy new jar
+  copy:
+    src: $WORKSPACE/target/{{ jar_name }}
+    dest: /opt/{{ jar_name }}
+    owner: root
+    group: root
+    mode: "0755"
+
+
+# - name: check jar exist
+#   shell: ls {{ deploy_path }}/{{ jar_name }}
+#   register: jar_exist
+
+# - name: jar is exist
+#   debug: var=jar_exist
+
+- name: check jar exist
+  include: ../../check_jar_exist/tasks/check_jar_exist.yml

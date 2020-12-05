@@ -1,0 +1,29 @@
+---
+
+###########################
+#
+# 回滚启动旧部署包
+#
+###########################
+
+#删除新包
+- name: delete new jar
+  shell: rm -f {{ deploy_path }}/{{ jar_name }}
+  register: delete_new_jar
+
+- name: show delete new jar result
+  debug: var=delete_new_jar
+
+#把旧版本包从备份目录取出
+- name: cp old jar
+  shell: cp {{ backup_path }}/{{ old_jar.stdout }} {{ deploy_path }}
+  register: cp_old_jar
+
+- name: show cp old jar
+  debug: var=cp_old_jar
+
+#重新启动旧包
+- name: start old jar
+  vars:
+    - jar_name: "{{ old_jar.stdout }}"
+  include: ../../start_service/tasks/start_service.yml

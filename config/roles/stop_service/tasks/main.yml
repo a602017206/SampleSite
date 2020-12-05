@@ -1,0 +1,56 @@
+---
+
+##################
+# 服务停止
+##################
+
+#查找应用启动的pid
+- name: get pid
+  shell: 
+      ps -ef|grep java |grep {{ jar_pre }}|grep -v 'grep'|awk -F " " '{print $2}'
+  register: pid
+
+- name: show pid
+  debug: var=pid
+
+#查找旧包名称，restart用
+- name: get old jar name
+  shell: ps -ef|grep java |grep {{ jar_pre }}|grep -v 'grep'|awk -F " " '{print $NF}'
+  register: old_jar_name
+
+- name: show old jar name
+  debug: var=old_jar_name
+
+#优雅停机
+- name: kill pid
+  shell: kill -15 {{ pid.stdout }}
+  when: pid.stdout != ""
+  register: kill_pid_result
+
+- name: show kill pid result
+  debug: var=kill_pid_result verbosity=0
+
+#端口检查，确定服务已经完全停掉，超时时间300s
+- name: check service stoped
+  wait_for: 
+    host: "{{ ansible_host }}"
+    port: "{{ service_port }}"
+    delay: 10
+    sleep: 10
+    state: stopped
+    timeout: 300
+    msg: service stop fail
+  register: service_stop_result
+  when: pid.stdout != ""
+
+- name: show stop result
+  debug: var=service_stop_result
+
+#优雅停机超时未停止则强行杀死，继续后续操作
+- name: kill -9 pid
+  shell: kill -9 {{ pid.stdout }}
+  when: pid.stdout != "" and service_stop_result is failure
+  register: kill_result
+
+- name: show kill result
+  debug: var=kill_result

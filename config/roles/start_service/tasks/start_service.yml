@@ -1,0 +1,39 @@
+---
+
+- name: launch jar
+  shell:
+      nohup java {{ launch_args }} -jar {{ deploy_path }}/{{ jar_name }} > /dev/null 2>&1 &
+  register: launch_result
+
+- name: show launch result
+  debug: var=launch_result
+
+- name: show msg
+  debug: msg={{ ansible_host }}:{{ service_port }}
+
+#端口校验，验证端口是否已经可用，超时时间300s
+- name: check service running
+  wait_for: 
+    host: "{{ ansible_host }}"
+    port: "{{ service_port }}"
+    timeout: 300
+    delay: 10
+    sleep: 10
+    state: started
+    msg: service start fail
+  register: check_port_result
+
+- name: show check port result
+  debug: var=check_port_result
+
+#服务健康性检查，目前只检查是否返回200状态
+- name: wait until the page is available
+  uri:
+    url: "http://{{ ansible_host }}:{{ service_port }}/actuator/health"
+  register: http_api_result
+  until: http_api_result.status == 200
+  retries: 12
+  delay: 5
+
+- name: show check http api result
+  debug: var=http_api_result

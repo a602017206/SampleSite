@@ -1,0 +1,26 @@
+---
+
+########################
+#
+# 备份旧版本
+#
+########################
+
+- name: check backup dir exist
+  shell: ls {{ backup_path }}
+  register: backup_dir_exist
+
+- name: mkdir backup dir
+  shell: mkdir -p {{ backup_path }}
+  when: backup_dir_exist is failure
+
+- name: get old jar name
+  shell: ls {{ deploy_path }}/{{ jar_pre }}*.jar | awk -F '/' '{print $NF}'
+  register: old_jar
+
+- name: show old jar
+  debug: var=old_jar
+
+- name: backup old jar
+  shell: cp {{ deploy_path }}/{{ jar_pre }}*.jar {{ backup_path }}
+  

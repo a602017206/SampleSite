@@ -1,0 +1,16 @@
+---
+
+#########################
+#
+# 检查是否需要升级
+#
+#########################
+
+- name: check jar exist
+  include: ../../check_jar_exist/tasks/check_jar_exist.yml
+
+- name: if_update
+  fail: msg="版本号一致，无需升级!"
+  when: 
+   - jar_exist is success 
+   - jar_exist.stdout != ""
