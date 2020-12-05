@@ -8,4 +8,4 @@
 
 - name: rollback jar
   include: rollback.yml
-  when: launch_result is failure or jar_exist is failure or check_port_result is failure or http_api_result is failure or http_api_result.status != 200
+  #when: launch_result is failure or jar_exist is failure or check_port_result is failure or http_api_result is failure or http_api_result.status != 200
