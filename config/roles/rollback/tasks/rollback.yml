@@ -24,7 +24,7 @@
 
 - name: show http_api_result
   debug: var=http_api_result
-  when: http_api_result.status != 200
+  when: http_api_result.status == 200
 
 #删除新包
 - name: delete new jar

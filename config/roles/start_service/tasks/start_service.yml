@@ -37,3 +37,7 @@
 
 - name: show check http api result
   debug: var=http_api_result
+
+- name: regist status
+  register: http_api_result.status
+  when: http_api_result.status == 200
