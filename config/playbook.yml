@@ -29,6 +29,7 @@
     - restart
     - update
     - deploy
+    - redeploy
   roles:
     - stop_service
 
@@ -41,6 +42,7 @@
   tags:
     - backup
     - update
+    - redeploy
   roles:
     - backup_jar
 
@@ -56,6 +58,7 @@
     - download
     - update
     - deploy
+    - redeploy
   roles:
     - copy_jar
 
@@ -85,6 +88,7 @@
     - start
     - update
     - deploy
+    - redeploy
   roles:
     - { role: start_service, when: jar_exist is undefined or jar_exist is success }
 
@@ -110,5 +114,6 @@
     - service_port: "{{ test_service_port }}"
   tags:
     - update
+    - redeploy
   roles:
     - { role: rollback, when: launch_result is failure or jar_exist is failure or check_port_result is failure or http_api_result is failure or http_api_result != 200 }
