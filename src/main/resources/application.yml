@@ -1,7 +1,5 @@
 server:
   port: 8544
-  servlet:
-    context-path: /sampleSite
 
 createJarTime: '@build.time@'
 
