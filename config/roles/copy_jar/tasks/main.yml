@@ -11,7 +11,7 @@
 
 - name: copy new jar
   copy:
-    src: $WORKSPACE/target/{{ jar_name }}
+    src: /{{ workSpace }}/target/{{ jar_name }}
     dest: /opt/{{ jar_name }}
     owner: root
     group: root
