@@ -51,6 +51,7 @@
   vars:
     - jar_name: "{{ test_jar_name }}"
     - jar_url: "{{ test_jar_url }}"
+    - jar_pre: "{{ test_jar_pre }}"
   tags:
     - download
     - update
