@@ -7,7 +7,7 @@
 #################################
 
 - name: delete old jar
-  shell: rm -f /app/appuser/{{ jar_pre }}*.jar
+  shell: rm -f /opt/{{ jar_pre }}*.jar
 
 - name: copy new jar
   copy:
