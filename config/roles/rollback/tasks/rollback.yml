@@ -6,6 +6,26 @@
 #
 ###########################
 
+- name: show launch_result
+  debug: var=launch_result
+  when: launch_result is failure
+
+- name: show jar_exist
+  debug: var=jar_exist
+  when: jar_exist is failure
+
+- name: show check_port_result
+  debug: var=check_port_result
+  when: check_port_result is failure
+
+- name: show http_api_result
+  debug: var=http_api_result
+  when: http_api_result is failure
+
+- name: show http_api_result
+  debug: var=http_api_result
+  when: http_api_result.status != 200
+
 #删除新包
 - name: delete new jar
   shell: rm -f {{ deploy_path }}/{{ jar_name }}
