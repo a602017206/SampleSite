@@ -99,7 +99,7 @@
   vars:
     - launch_args: "{{ test_launch_args }}"
     - service_port: "{{ test_service_port }}"
-    - jar_name: "{{ old_jar_name }}"
+    - jar_name: "{{ old_jar_name.stdout }}"
   tags:
     - restart
   roles:
