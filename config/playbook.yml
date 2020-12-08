@@ -43,6 +43,7 @@
     - backup
     - update
     - redeploy
+    - restart
   roles:
     - backup_jar
 
