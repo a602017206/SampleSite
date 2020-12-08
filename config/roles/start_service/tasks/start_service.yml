@@ -32,7 +32,7 @@
   uri:
     url: "http://{{ ansible_host }}:{{ service_port }}/actuator/health"
   register: http_api_result
-  until: http_api_result.status == "200"
+  until: http_api_result.status == 200
   retries: 12
   delay: 5
 
