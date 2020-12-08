@@ -24,7 +24,7 @@
 
 - name: show failure
   debug: var=status
-  when:
+#  when: status != "200"
 
 
 
