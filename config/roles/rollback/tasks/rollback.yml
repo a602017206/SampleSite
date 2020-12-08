@@ -22,9 +22,9 @@
   debug: msg="http_api_result is failure"
   when: http_api_result is failure
 
-- name: show status
-  debug: var=status
-  when: status != "200"
+- name: show http_api_status
+  debug: var=http_api_status
+  when: http_api_status != "200"
 
 
 

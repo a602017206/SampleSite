@@ -36,5 +36,11 @@
   retries: 12
   delay: 5
 
+- name: set http_api_status
+  set_fact:
+    http_api_status: http_api_result.status
+  when: http_api_result is ok
+
+
 - name: show check http api result
   debug: var=http_api_result
