@@ -28,10 +28,11 @@
 
 #服务健康性检查，目前只检查是否返回200状态
 - name: wait until the page is available
+  ignore_errors: true
   uri:
     url: "http://{{ ansible_host }}:{{ service_port }}/actuator/health"
   register: http_api_result
-  until: http_api_result.status == 202
+  until: http_api_result.status == 200
   retries: 12
   delay: 5
 
