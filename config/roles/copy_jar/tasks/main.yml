@@ -12,7 +12,7 @@
 - name: copy new jar
   copy:
     src: /{{ workSpace }}/target/{{ jar_name }}
-    dest: /opt/{{ jar_name }}
+    dest: /opt{{ jar_name }}
     owner: root
     group: root
     mode: "0755"
