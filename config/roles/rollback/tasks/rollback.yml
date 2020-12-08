@@ -6,9 +6,8 @@
 #
 ###########################
 
-- name: show http_api_result
-  debug: var=http_api_result
-  when: http_api_result.status == 200
+- name: show status
+  debug: var=status
 
 #删除新包
 - name: delete new jar
