@@ -6,10 +6,6 @@
 #
 ###########################
 
-- name: show status
-  debug: var=status
-  when: status != "200"
-
 #删除新包
 - name: delete new jar
   shell: rm -f {{ deploy_path }}/{{ jar_name }}
