@@ -119,4 +119,5 @@
     - redeploy
     - restart
   roles:
-    - { role: rollback, when: launch_result is failure or jar_exist is failure or check_port_result is failure or http_api_result is failure or status != "200" }
+#    - { role: rollback, when: launch_result is failure or jar_exist is failure or check_port_result is failure or http_api_result is failure or status != "200" }
+    - { role: rollback, when: status != "200" }
