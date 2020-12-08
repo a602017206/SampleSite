@@ -23,8 +23,8 @@
   when: http_api_result is failure
 
 - name: show failure
-  debug: msg="status != 200"
-  when: status != 200
+  debug: var=status
+  when:
 
 
 
