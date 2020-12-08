@@ -36,5 +36,5 @@
   retries: 12
   delay: 5
 
-#- name: show check http api result
-#  debug: var=http_api_result
+- name: show check http api result
+  debug: var=http_api_result
