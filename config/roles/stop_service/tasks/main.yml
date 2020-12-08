@@ -15,7 +15,7 @@
 
 #查找旧包名称，restart用
 - name: get old jar name
-  shell: ps -ef|grep java |grep {{ jar_pre }}|grep -v 'grep'|awk -F " " '{print $NF}'
+  shell: ps -ef|grep java |grep {{ jar_pre }}|grep -v 'grep'|awk -F "/" '{print $NF}'
   register: old_jar_name
 
 - name: show old jar name
