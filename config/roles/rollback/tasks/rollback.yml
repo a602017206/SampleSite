@@ -8,7 +8,7 @@
 
 - name: show status
   debug: var=status
-  when: status != 200
+  when: status != "200"
 
 #删除新包
 - name: delete new jar
