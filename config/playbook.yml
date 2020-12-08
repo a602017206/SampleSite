@@ -113,7 +113,7 @@
     - jar_name: "{{ test_jar_name }}"
     - launch_args: "{{ test_launch_args }}"
     - service_port: "{{ test_service_port }}"
-    - status: http_api_result.status
+    - status: "{{ http_api_result.status }}"
   tags:
     - update
     - redeploy
