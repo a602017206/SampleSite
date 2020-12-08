@@ -24,7 +24,7 @@
 
 - name: show failure
   debug: msg="status != 200"
-  when: status != "200"
+  when: status == "200"
 
 
 
