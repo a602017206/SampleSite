@@ -1,0 +1,11 @@
+---
+# 全局参数表
+
+dowload_username: test
+dowload_password: test
+
+deploy_path: /opt/
+
+backup_path: /opt/backup
+
+jar_url_pre: http://xxx

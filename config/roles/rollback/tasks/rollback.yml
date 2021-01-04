@@ -1,0 +1,51 @@
+---
+
+###########################
+#
+# 回滚启动旧部署包
+#
+###########################
+
+- name: show launch_result
+  debug: msg="launch_result is failure"
+  when: launch_result is failure
+
+- name: show jar_exist
+  debug: msg="jar_exist is failure"
+  when: jar_exist is failure
+
+- name: show check_port_result
+  debug: msg="check_port_result is failure"
+  when: check_port_result is failure
+
+- name: show http_api_result
+  debug: msg="http_api_result is failure"
+  when: http_api_result is failure
+
+- name: show http_api_status
+  debug: var=http_api_status
+  when: http_api_status != "200"
+
+
+
+#删除新包
+- name: delete new jar
+  shell: rm -f {{ deploy_path }}/{{ jar_name }}
+  register: delete_new_jar
+
+- name: show delete new jar result
+  debug: var=delete_new_jar
+
+#把旧版本包从备份目录取出
+- name: cp old jar
+  shell: cp {{ backup_path }}/{{ old_jar.stdout }} {{ deploy_path }}
+  register: cp_old_jar
+
+- name: show cp old jar
+  debug: var=cp_old_jar
+
+#重新启动旧包
+- name: start old jar
+  vars:
+    - jar_name: "{{ old_jar.stdout }}"
+  include: ../../start_service/tasks/start_service.yml

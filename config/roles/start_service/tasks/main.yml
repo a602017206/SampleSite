@@ -1,0 +1,18 @@
+---
+
+######################
+#
+# 启动应用
+#
+######################
+
+# - name: dowload if_success
+#   fail:
+#     msg: "download error don't start" 
+#   when: 
+#     jar_exist is failure
+
+- name: start service
+  include: start_service.yml
+
+

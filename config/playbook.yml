@@ -1,0 +1,121 @@
+---
+
+#############################
+#
+# 测试启动脚本
+#
+#############################
+
+#检查是否需要更新，只检查包名
+- name: if update
+  hosts: test
+  vars:
+    - jar_name: "{{ test_jar_name }}"
+  any_errors_fatal: true
+  tags:
+    - update
+  roles:
+    - check_update
+
+#停止服务
+- name: stop old service
+  hosts: test
+  ignore_errors: true
+  vars:
+    - service_port: "{{ test_service_port }}"
+    - jar_pre: "{{ test_jar_pre }}"
+  tags:
+    - stop
+    - restart
+    - update
+    - deploy
+    - redeploy
+  roles:
+    - stop_service
+
+#备份旧包
+- name: backup old jar
+  hosts: test
+  ignore_errors: true
+  vars:
+    - jar_pre: "{{ test_jar_pre }}"
+  tags:
+    - backup
+    - update
+    - redeploy
+    - restart
+  roles:
+    - backup_jar
+
+#复制新包到部署机器
+- name: copy new jar
+  hosts: test
+  ignore_errors: true
+  vars:
+    - jar_name: "{{ test_jar_name }}"
+    - jar_url: "{{ test_jar_url }}"
+    - jar_pre: "{{ test_jar_pre }}"
+  tags:
+    - download
+    - update
+    - deploy
+    - redeploy
+  roles:
+    - copy_jar
+
+#检查包是否存在
+- name: check jar exist
+  hosts: test
+  ignore_errors: true
+  vars:
+    - jar_name: "{{ test_jar_name }}"
+    - jar_url: "{{ test_jar_url }}"
+  tags:
+    - start
+    - restart
+    - check_jar_exist
+  roles:
+    - check_jar_exist
+
+#启动服务
+- name: start service
+  hosts: test
+  ignore_errors: true
+  vars:
+    - launch_args: "{{ test_launch_args }}"
+    - service_port: "{{ test_service_port }}"
+    - jar_name: "{{ test_jar_name }}"
+  tags:
+    - start
+    - update
+    - deploy
+    - redeploy
+  roles:
+    - { role: start_service, when: jar_exist is undefined or jar_exist is success }
+
+#启动服务（重启状态）
+- name: start service
+  hosts: test
+  ignore_errors: true
+  vars:
+    - launch_args: "{{ test_launch_args }}"
+    - service_port: "{{ test_service_port }}"
+    - jar_name: "{{ old_jar_name.stdout }}"
+  tags:
+    - restart
+  roles:
+    - { role: start_service, when: jar_exist is undefined or jar_exist is success }
+
+#回滚
+- name: rollback
+  hosts: test
+  vars:
+    - jar_name: "{{ test_jar_name }}"
+    - launch_args: "{{ test_launch_args }}"
+    - service_port: "{{ test_service_port }}"
+  tags:
+    - update
+    - redeploy
+    - restart
+  roles:
+    - { role: rollback, when: launch_result is failure or jar_exist is failure or check_port_result is failure or http_api_result is failure or http_api_status != "200" }

@@ -1,0 +1,16 @@
+---
+
+#####################
+#
+# 启动前检查jar包是否存在
+#
+#####################
+
+- name: check jar exist
+  include: check_jar_exist.yml
+
+- name: jar exist
+  fail: msg="对应版本的jar包不存在，无法启动，请检查后重试!"
+  when: 
+   - jar_exist is failure
+#   - jar_exist.stdout like "ls:"
