@@ -6,9 +6,9 @@ createJarTime: '@build.time@'
 
 nacos:
   config:
-    server-addr: 82.157.129.159:8849
+    server-addr: 127.0.0.1:8849
   discovery:
-    server-addr: 82.157.129.159:8849
+    server-addr: 127.0.0.1:8849
 
 management:
   endpoints:

@@ -40,7 +40,7 @@ public class MainApplication {
 
 	@PostConstruct
 	public void registerService() throws NacosException {
-		namingService.registerInstance(applicationName, "82.157.129.159", serverPort);
+		namingService.registerInstance(applicationName, "127.0.0.1", serverPort);
 	}
 
 }
