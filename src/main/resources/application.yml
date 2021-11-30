@@ -26,4 +26,4 @@ management:
       show-details: always
 spring:
   application:
-    name: sample-site
+    name: SampleSite
