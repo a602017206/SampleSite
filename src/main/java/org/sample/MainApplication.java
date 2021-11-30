@@ -1,5 +1,6 @@
 package org.sample;
 
+import com.alibaba.nacos.spring.context.annotation.config.NacosPropertySource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -8,7 +9,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = "org.sample")
+@NacosPropertySource(dataId = "sample-site", autoRefreshed = true)
 public class MainApplication {
 
 	static Logger logger = LoggerFactory.getLogger(MainApplication.class);

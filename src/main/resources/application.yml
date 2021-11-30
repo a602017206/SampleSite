@@ -1,7 +1,14 @@
 server:
   port: 8544
 
+
 createJarTime: '@build.time@'
+
+nacos:
+  config:
+    server-addr: 82.157.129.159:8849
+  discovery:
+    server-addr: 82.157.129.159:8849
 
 management:
   endpoints:
@@ -17,3 +24,6 @@ management:
   endpoint:
     health:
       show-details: always
+spring:
+  application:
+    name: sample-site
