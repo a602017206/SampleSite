@@ -14,4 +14,7 @@ public class SampleSiteProperties {
     @Value("${git.commit.time:}")
     private String gitCommitTime;
 
+    @Value("${test.prop:huhu}")
+    private String prop;
+
 }

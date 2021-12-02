@@ -6,11 +6,11 @@ createJarTime: '@build.time@'
 
 nacos:
   config:
-    server-addr: 127.0.0.1:8849
+    server-addr: 82.157.129.159:8848
     username: nacos
     password: nacos
   discovery:
-    server-addr: 127.0.0.1:8849
+    server-addr: 82.157.129.159:8848
     auto-register: true
     username: nacos
     password: nacos

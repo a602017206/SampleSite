@@ -15,9 +15,6 @@ import org.springframework.context.annotation.Configuration;
 @NacosPropertySource(dataId = "SampleSite", autoRefreshed = true)
 public class MainApplication {
 
-	@Value("${test.prop:huhu}")
-	private String prop;
-
 	static Logger logger = LoggerFactory.getLogger(MainApplication.class);
 
 	//定义静态的ApplicationContext

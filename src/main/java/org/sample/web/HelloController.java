@@ -1,6 +1,7 @@
 package org.sample.web;
 
 import lombok.extern.log4j.Log4j2;
+import org.sample.config.SampleSiteProperties;
 import org.sample.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,9 @@ public class HelloController {
 
     @Resource
     private UserService userService;
+
+    @Resource
+    private SampleSiteProperties properties;
 
     @RequestMapping("/hello")
     public String hello() {
@@ -33,5 +37,10 @@ public class HelloController {
         }
 
         return "12";
+    }
+
+    @RequestMapping(value = "/getProperties", method = RequestMethod.GET)
+    public String getProperties(){
+        return properties.toString();
     }
 }
