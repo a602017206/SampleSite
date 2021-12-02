@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<!-- https://www.cnblogs.com/chrischennx/p/6781574.html -->
+
+	<!--	%c{n} (%lo{n}, %logger{n}) 所对应logger的名字，后面跟长度，如果长度过长会吧前面的包名省略到首字母。-->
+	<!--	%C{n}（%class{n}） logger所在class的名字，其他的和上面一样。一般来说logger的名字和所在的class名字最好一样-->
+	<!--	%d{pattern} (%date{pattern}) 时间，pattern里可以用分号来指定输出多个-->
+	<!--	%L（%line） logger所在文件的行数-->
+	<!--	%m（%msg，%message） logger的信息-->
+	<!--	%p（%le， %level） 日志等级-->
+	<!--	%t（%thread） 线程名-->
+	<!--	%X{key:-defaultVal}（%mdc{key:-defaultVal}） MDC信息，MDC也是log4j的东西，也自然可以用在这里-->
+	<!--	%ex{depth}（%exception{depth}， %throwable{depth}） 错误信息，默认值是full，也就是全栈打出-->
+
+	<!--	%n 如果长度不够会在左边加空格-->
+	<!--	%-n 如果长度不够会在右边加空格-->
+	<!--	%.n 如果长度超过会从开头开始截取直到长度对应-->
+	<!--	%.-n 如果长度超过会从结尾开始截取直到长度对应-->
+	<!--	%n.m 第一种情况和第三种情况结合，1、2和3、4可以任意结合-->
+
+	<!--	还可以通过"%black", "%red", "%green","%yellow","%blue", "%magenta",-->
+	<!--	"%cyan", "%white", "%gray", "%boldRed","%boldGreen", "%boldYellow", -->
+	<!--	"%boldBlue", "%boldMagenta""%boldCyan", "%boldWhite"和"%highlight"来加颜色。-->
+
+
+	<property name="DEV_HOME" value="./logs/"/>
+
+	<!-- 控制台 appender -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
+		</encoder>
+    </appender>
+
+	<appender name="FILE-AUDIT"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${DEV_HOME}/debug.log</file>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>
+				%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n
+			</Pattern>
+		</encoder>
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- rollover daily -->
+			<fileNamePattern>${DEV_HOME}/archived/debug.%d{yyyy-MM-dd}.%i.log
+			</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter"><!-- 只打印对应级别日志 -->
+            <level>DEBUG</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+
+	</appender>
+	
+	<appender name="FILE-ERROR"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${DEV_HOME}/error.log</file>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>
+				%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n
+			</Pattern>
+		</encoder>
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- rollover daily -->
+			<fileNamePattern>${DEV_HOME}/archived/error.%d{yyyy-MM-dd}.%i.log
+			</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter"><!-- 只打印对应级别日志 -->
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+
+	</appender>
+	
+	<appender name="FILE-INFO"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${DEV_HOME}/info.log</file>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>
+				%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n
+			</Pattern>
+		</encoder>
+
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<!-- rollover daily -->
+			<fileNamePattern>${DEV_HOME}/archived/info.%d{yyyy-MM-dd}.%i.log
+			</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<maxFileSize>10MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter"><!-- 只打印对应级别日志 -->
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+
+	</appender>
+
+	<logger name="alioth.debug" additivity="false">
+		<level value="DEBUG" />
+		<appender-ref ref="FILE-AUDIT" />
+		<appender-ref ref="FILE-ERROR" />
+		<appender-ref ref="FILE-INFO" />
+	</logger>
+	
+	<root level="INFO">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="FILE-AUDIT" />
+		<appender-ref ref="FILE-ERROR" />
+		<appender-ref ref="FILE-INFO" />
+	</root>
+	
+</configuration>
