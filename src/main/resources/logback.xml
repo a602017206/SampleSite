@@ -110,7 +110,7 @@
 
 	</appender>
 
-	<logger name="alioth.debug" additivity="false">
+	<logger name="debug" additivity="false">
 		<level value="DEBUG" />
 		<appender-ref ref="FILE-AUDIT" />
 		<appender-ref ref="FILE-ERROR" />
