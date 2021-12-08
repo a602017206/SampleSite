@@ -9,6 +9,7 @@ nacos:
     server-addr: 82.157.129.159:8848
     username: nacos
     password: nacos
+    auto-refresh: true
   discovery:
     server-addr: 82.157.129.159:8848
     auto-register: true
