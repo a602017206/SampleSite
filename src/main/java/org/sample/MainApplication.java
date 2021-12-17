@@ -3,7 +3,6 @@ package org.sample;
 import com.alibaba.nacos.spring.context.annotation.config.NacosPropertySource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
