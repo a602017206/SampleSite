@@ -22,7 +22,9 @@
 	<!--	"%cyan", "%white", "%gray", "%boldRed","%boldGreen", "%boldYellow", -->
 	<!--	"%boldBlue", "%boldMagenta""%boldCyan", "%boldWhite"和"%highlight"来加颜色。-->
 
-
+		<!--  日志对象变量，同一个数据表可分业务机器存储  -->
+<!--	<define name="ip" class="org.newSite.config.LogIpConfig"></define>-->
+<!--	<property name="DEV_HOME" value="./logs/${ip}"/>-->
 	<property name="DEV_HOME" value="./logs/"/>
 
 	<!-- 控制台 appender -->

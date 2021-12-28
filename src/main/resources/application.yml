@@ -1,7 +1,7 @@
 server:
   port: 8544
 
-
+#打包时间
 createJarTime: '@build.time@'
 
 #nacos配置中心及注册中心

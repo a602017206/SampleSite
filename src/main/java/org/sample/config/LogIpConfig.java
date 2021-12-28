@@ -8,8 +8,8 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 /**
- * 日志分机器保存
- * @author 18123055
+ * logback日志分机器保存
+ * @author
  *
  */
 public class LogIpConfig extends PropertyDefinerBase {

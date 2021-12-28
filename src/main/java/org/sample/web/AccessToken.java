@@ -3,13 +3,16 @@ package org.sample.web;
 import org.sample.config.SampleSiteProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.annotation.Resource;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * @date 2021年12月23日
+ * @Description 重复获取有时效的token，微信公众号
+ */
 @SpringBootApplication
 public class AccessToken implements CommandLineRunner {
 

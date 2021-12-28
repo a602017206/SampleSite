@@ -13,6 +13,9 @@ import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
+/**
+ * nacos测试代码
+ */
 @Controller
 @RequestMapping("discovery")
 public class DiscoveryController {
