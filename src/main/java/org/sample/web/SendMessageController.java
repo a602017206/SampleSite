@@ -14,7 +14,6 @@ import java.util.UUID;
 
 /**
  * @author
- * @deprecated
  * @desc rabbitMq发送消息测试
  */
 @RestController
