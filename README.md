@@ -2,6 +2,7 @@
 
 #### 介绍
 简单web项目
+springboot骨架工程
 
 #### 软件架构
 软件架构说明
@@ -15,7 +16,7 @@
 
 #### 使用说明
 
-1.  xxxx
+1.  启用rabbitMq需要将类 DirectRabbitConfig 和 DirectReceiver 注解注释去掉
 2.  xxxx
 3.  xxxx
 

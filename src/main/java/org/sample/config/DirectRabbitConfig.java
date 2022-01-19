@@ -5,9 +5,12 @@ import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.core.Queue;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
-@Configuration
+/**
+ * @author
+ * @desc rabbitMq配置类
+ */
+//@Configuration
 public class DirectRabbitConfig {
 
     //队列 起名：TestDirectQueue

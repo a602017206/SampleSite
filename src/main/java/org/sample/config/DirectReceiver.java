@@ -1,9 +1,6 @@
 package org.sample.config;
 
 import lombok.extern.log4j.Log4j2;
-import org.springframework.amqp.rabbit.annotation.RabbitHandler;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
-import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
@@ -11,12 +8,12 @@ import java.util.Map;
  * @author
  * RabbitMq消息监听
  */
-@Component
-@RabbitListener(queues = "TestDirectQueue")//监听的队列名称 TestDirectQueue
+//@Component
+//@RabbitListener(queues = "TestDirectQueue")//监听的队列名称 TestDirectQueue
 @Log4j2
 public class DirectReceiver {
 
-    @RabbitHandler
+//    @RabbitHandler
     public void process(Map testMessage) {
         log.info("DirectReceiver消费者收到消息  : " + testMessage.toString());
     }
