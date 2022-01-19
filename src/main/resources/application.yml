@@ -35,3 +35,8 @@ management:
 spring:
   application:
     name: SampleSite
+  rabbitmq:
+    host: 82.157.129.159
+    port: 5672
+    username: root
+    password: 123456

@@ -1,0 +1,14 @@
+### 发送rabbitMq测试消息
+GET http://localhost:8544/rabbitMq/sendDirectMessage
+
+###
+GET http://localhost:8544/test/hello
+
+###
+GET http://localhost:8544/test/getName
+
+###
+GET http://localhost:8544/test/getProperties
+
+###
+GET http://localhost:8544/discovery/get
