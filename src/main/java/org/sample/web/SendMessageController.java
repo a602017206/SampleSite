@@ -40,6 +40,11 @@ public class SendMessageController {
     @Resource
     private KafkaTemplate<String, String> kafkaTemplate;
 
+    /**
+     * 发送rabbitMq测试消息
+     * @param message
+     * @return
+     */
     @GetMapping("/sendRabbitMqMessage")
     public String sendRabbitMqMessage(@RequestParam(value = "message", required = false) String message) {
         String messageId = String.valueOf(UUID.randomUUID());
@@ -57,7 +62,11 @@ public class SendMessageController {
         return "ok";
     }
 
-    @RequestMapping("/sendKafkaMessage")
+    /**
+     * 发送kafka测试消息
+     * @param message
+     */
+    @GetMapping("/sendKafkaMessage")
     public void send(@RequestParam(value = "message", required = false) String message) {
 
         String messageDate = "hello,kafka";
