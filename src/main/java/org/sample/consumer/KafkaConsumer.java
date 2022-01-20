@@ -3,13 +3,12 @@ package org.sample.consumer;
 import lombok.extern.log4j.Log4j2;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.stereotype.Component;
 
 /**
  * @author
  * @desc kafka消费类
  */
-@Component
+//@Component
 @Log4j2
 public class KafkaConsumer {
 
