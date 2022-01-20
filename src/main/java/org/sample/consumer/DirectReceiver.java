@@ -1,4 +1,4 @@
-package org.sample.config;
+package org.sample.consumer;
 
 import lombok.extern.log4j.Log4j2;
 

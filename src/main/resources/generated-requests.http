@@ -1,14 +1,17 @@
 ### 发送rabbitMq测试消息
-GET http://localhost:8544/rabbitMq/sendDirectMessage
+GET http://localhost:8544/messageQueue/sendRabbitMqMessage
 
-###
+### 发送Kafka测试消息
+GET http://localhost:8544/messageQueue/sendKafkaMessage
+
+### 服务监测
 GET http://localhost:8544/test/hello
 
-###
+### 服务测试接口
 GET http://localhost:8544/test/getName
 
-###
+### 包信息检查
 GET http://localhost:8544/test/getProperties
 
-###
+### nacos检测
 GET http://localhost:8544/discovery/get
