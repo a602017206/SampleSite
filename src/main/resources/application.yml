@@ -5,17 +5,17 @@ server:
 createJarTime: '@build.time@'
 
 #nacos配置中心及注册中心
-nacos:
-  config:
-    server-addr: 127.0.0.1:8848
-    username: nacos
-    password: nacos
-    auto-refresh: true
-  discovery:
-    server-addr: 127.0.0.1:8848
-    auto-register: false
-    username: nacos
-    password: nacos
+#nacos:
+#  config:
+#    server-addr: 127.0.0.1:8848
+#    username: nacos
+#    password: nacos
+#    auto-refresh: true
+#  discovery:
+#    server-addr: 127.0.0.1:8848
+#    auto-register: false
+#    username: nacos
+#    password: nacos
 
 #服务健康性检查
 management:
@@ -35,28 +35,30 @@ management:
 spring:
   application:
     name: SampleSite
-  rabbitmq:
-    host: 127.0.0.1
-    port: 5672
-    username: root
-    password: 123456
-  kafka:
-    bootstrap-servers: 127.0.0.1:9092
-    producer: # 生产者配置
-      retries: 3 # 设置大于0的值，则客户端会将发送失败的记录重新发送
-      batch-size: 16384 #16K
-      buffer-memory: 33554432 #32M
-      acks: 1
-      # 指定消息key和消息体的编解码方式
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
-    consumer:
-      group-id: quickstart-events # 消费者组
-      enable-auto-commit: false # 关闭自动提交
-      auto-offset-reset: earliest # 当各分区下有已提交的offset时，从提交的offset开始消费；无提交的offset时，从头开始消费
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      listener:
+  # rabbitmq配置，需要可以打开
+#  rabbitmq:
+#    host: 127.0.0.1
+#    port: 5672
+#    username: root
+#    password: 123456
+  # kafka 配置
+#  kafka:
+#    bootstrap-servers: 127.0.0.1:9092
+#    producer: # 生产者配置
+#      retries: 3 # 设置大于0的值，则客户端会将发送失败的记录重新发送
+#      batch-size: 16384 #16K
+#      buffer-memory: 33554432 #32M
+#      acks: 1
+#      # 指定消息key和消息体的编解码方式
+#      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+#    consumer:
+#      group-id: quickstart-events # 消费者组
+#      enable-auto-commit: false # 关闭自动提交
+#      auto-offset-reset: earliest # 当各分区下有已提交的offset时，从提交的offset开始消费；无提交的offset时，从头开始消费
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      listener:
         # 当每一条记录被消费者监听器（ListenerConsumer）处理之后提交
         # RECORD
         # 当每一批poll()的数据被消费者监听器（ListenerConsumer）处理之后提交
@@ -71,4 +73,4 @@ spring:
         # MANUAL
         # 手动调用Acknowledgment.acknowledge()后立即提交，一般使用这种
         # MANUAL_IMMEDIATE
-        ack-mode: manual_immediate
+#        ack-mode: manual_immediate
