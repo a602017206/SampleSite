@@ -1,22 +1,13 @@
 package org.sample.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
+import org.sample.domain.User;
+
 /**
- * @author dingwei
- */
-public interface UserService {
-
-    /**
-     * 获取用户名称
-     * @param userid 用户id
-     * @return
-     */
-    String getUserName(String userid);
-
-    /**
-     * 获取配置
-     * @return
-     */
-    String getCompontent();
-
+* @author dingwei
+* @description 针对表【user(用户信息)】的数据库操作Service
+* @createDate 2022-03-04 17:59:33
+*/
+public interface UserService extends IService<User> {
 
 }

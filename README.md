@@ -18,7 +18,7 @@ springboot骨架工程
 
 1.  启用rabbitMq需要将类 DirectRabbitConfig 和 DirectReceiver 注解注释去掉
 2.  启用kafka需要将KafkaConsumer注释的注解打开
-3.  xxxx
+3.  使用mybatis-plus时安装mybatisX插件可以直接生成相关的类和mapper文件
 
 #### 参与贡献
 

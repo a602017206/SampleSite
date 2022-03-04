@@ -35,6 +35,15 @@ management:
 spring:
   application:
     name: SampleSite
+  datasource:
+    url: jdbc:mysql://localhost:3306/sampleSite?useunicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8
+    username: root
+    password: 12345678
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    max-idle: 10
+    max-wait: 10000
+    min-idle: 5
+    initial-size: 5
   # rabbitmq配置，需要可以打开
 #  rabbitmq:
 #    host: 127.0.0.1

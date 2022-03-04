@@ -1,25 +1,22 @@
 package org.sample.service.impl;
 
-import lombok.extern.log4j.Log4j2;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.sample.domain.User;
+import org.sample.mapper.UserMapper;
 import org.sample.service.UserService;
 import org.springframework.stereotype.Service;
 
 /**
- * @author dingwei
- */
-@Log4j2
-@Service("userService")
-public class UserServiceImpl implements UserService {
-
-    @Override
-    public String getUserName(String userid) {
-        log.info("userid: {}", userid);
-        return "admin";
-    }
-
-    @Override
-    public String getCompontent() {
-        return null;
-    }
+* @author dingwei
+* @description 针对表【user(用户信息)】的数据库操作Service实现
+* @createDate 2022-03-04 17:59:33
+*/
+@Service
+public class UserServiceImpl extends ServiceImpl<UserMapper, User>
+    implements UserService{
 
 }
+
+
+
+
