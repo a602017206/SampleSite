@@ -10,9 +10,11 @@ springboot骨架工程
 
 #### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+## java17
+1. 
+切换jdk后编译<br>
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-17.0.2.jdk/Contents/Home/
+
 
 #### 使用说明
 

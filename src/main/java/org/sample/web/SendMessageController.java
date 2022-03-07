@@ -1,13 +1,10 @@
 package org.sample.web;
 
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
@@ -30,15 +27,15 @@ public class SendMessageController {
     /**
      * 使用RabbitTemplate,这提供了接收/发送等等方法
      */
-    @Resource
-    private RabbitTemplate rabbitTemplate;
+//    @Resource
+//    private RabbitTemplate rabbitTemplate;
 
 
     /**
      * 使用KafkaTemplate,这提供了接收/发送等等方法
      */
-    @Resource
-    private KafkaTemplate<String, String> kafkaTemplate;
+//    @Resource
+//    private KafkaTemplate<String, String> kafkaTemplate;
 
     /**
      * 发送rabbitMq测试消息
@@ -58,7 +55,7 @@ public class SendMessageController {
         map.put("messageData",messageData);
         map.put("createTime",createTime);
         //将消息携带绑定键值：TestDirectRouting 发送到交换机TestDirectExchange
-        rabbitTemplate.convertAndSend("TestDirectExchange", "TestDirectRouting", map);
+//        rabbitTemplate.convertAndSend("TestDirectExchange", "TestDirectRouting", map);
         return "ok";
     }
 
@@ -76,7 +73,7 @@ public class SendMessageController {
         }
         String messageId = String.valueOf(UUID.randomUUID());
         //发送功能就一行代码~
-        kafkaTemplate.send(TOPIC_NAME,  messageId, messageDate);
+//        kafkaTemplate.send(TOPIC_NAME,  messageId, messageDate);
     }
 
 }
