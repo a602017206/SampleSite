@@ -49,7 +49,8 @@ public class GenerateEncryptedString {
         try {
             md = MessageDigest.getInstance(encName);
             md.update(bt);
-            strDes = bytes2Hex(md.digest()); // to HexString
+            // to HexString
+            strDes = bytes2Hex(md.digest());
         } catch (NoSuchAlgorithmException e) {
             return null;
         }
@@ -107,7 +108,7 @@ public class GenerateEncryptedString {
                 charStr = dataStr.substring(start + 2, end);
             }
             char letter = (char) Integer.parseInt(charStr, 16); // 16进制parse整形字符串。
-            buffer.append(new Character(letter).toString());
+            buffer.append(new Character(letter));
             start = end;
         }
         return buffer.toString();

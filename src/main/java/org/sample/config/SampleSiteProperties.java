@@ -23,6 +23,9 @@ public class SampleSiteProperties {
     @Value("${git.commit.time:}")
     private String gitCommitTime;
 
+    /**
+     * nacos配置测试
+     */
     @Value("${test.prop:huhu}")
     private String prop;
 
