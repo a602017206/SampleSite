@@ -33,7 +33,7 @@ public class HelloController {
     public String getName() {
 
         try {
-            userService.getUserName("1");
+            userService.getBaseMapper().selectById(1);
         } catch (Exception e) {
             log.error("失败：", e);
         }
