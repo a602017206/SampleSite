@@ -24,7 +24,7 @@ public class User implements Serializable {
     /**
      * 用户名称
      */
-    private Integer name;
+    private String name;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

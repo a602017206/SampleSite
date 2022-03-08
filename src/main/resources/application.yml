@@ -44,7 +44,15 @@ spring:
     max-wait: 10000
     min-idle: 5
     initial-size: 5
-  # rabbitmq配置，需要可以打开
+  flyway:
+    baseline-on-migrate: true
+    enabled: true
+    encoding: UTF-8
+    clean-disabled: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+    # rabbitmq配置，需要可以打开
 #  rabbitmq:
 #    host: 127.0.0.1
 #    port: 5672

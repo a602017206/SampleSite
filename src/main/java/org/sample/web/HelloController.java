@@ -2,6 +2,7 @@ package org.sample.web;
 
 import lombok.extern.log4j.Log4j2;
 import org.sample.config.SampleSiteProperties;
+import org.sample.domain.User;
 import org.sample.service.UserService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,7 +34,10 @@ public class HelloController {
     public String getName() {
 
         try {
-            userService.getBaseMapper().selectById(1);
+            User user = userService.getBaseMapper().selectById(1);
+            if (null != user) {
+                return user.getName();
+            }
         } catch (Exception e) {
             log.error("失败：", e);
         }
