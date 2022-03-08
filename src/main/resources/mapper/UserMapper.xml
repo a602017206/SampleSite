@@ -5,11 +5,16 @@
 <mapper namespace="org.sample.mapper.UserMapper">
 
     <resultMap id="BaseResultMap" type="org.sample.domain.User">
-            <id property="id" column="id" jdbcType="INTEGER"/>
-            <result property="name" column="name" jdbcType="INTEGER"/>
+            <id property="userId" column="user_id" jdbcType="BIGINT"/>
+            <result property="name" column="name" jdbcType="VARCHAR"/>
+            <result property="password" column="password" jdbcType="VARCHAR"/>
+            <result property="email" column="email" jdbcType="VARCHAR"/>
+            <result property="roleId" column="role_id" jdbcType="BIGINT"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,name
+        user_id,name,password,
+        email,role_id,create_time
     </sql>
 </mapper>
