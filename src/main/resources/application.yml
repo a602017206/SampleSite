@@ -25,10 +25,9 @@ management:
         include: "*"
   server:
     port: 8544
-    servlet:
-      context-path: /
     ssl:
       enabled: false
+    base-path: /
   endpoint:
     health:
       show-details: always
