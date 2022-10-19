@@ -7,7 +7,7 @@ import org.sample.service.UserService;
 import org.springframework.stereotype.Service;
 
 /**
-* @author dingwei
+* @author
 * @description 针对表【user(用户信息表)】的数据库操作Service实现
 * @createDate 2022-03-08 11:52:33
 */
