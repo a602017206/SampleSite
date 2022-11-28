@@ -58,7 +58,10 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
-    # rabbitmq配置，需要可以打开
+
+mybatis-plus:
+
+# rabbitmq配置，需要可以打开
 #  rabbitmq:
 #    host: 127.0.0.1
 #    port: 5672

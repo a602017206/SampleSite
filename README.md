@@ -16,6 +16,9 @@ springboot骨架工程
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-17.0.2.jdk/Contents/Home/
 
 
+-javaagent:./skywalking-agent/skywalking-agent.jar -Dskywalking.agent.application_name=sample-site -Dskywalking.agent.service_name=sample-site -Dskywalking.collector.servers=localhost:12800
+
+
 #### 使用说明
 
 1.  启用rabbitMq需要将类 DirectRabbitConfig 和 DirectReceiver 注解注释去掉

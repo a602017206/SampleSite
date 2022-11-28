@@ -1,12 +1,12 @@
 package org.sample.web;
 
+import jakarta.annotation.Resource;
 import org.sample.config.SampleSiteProperties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import javax.annotation.Resource;
 import java.util.concurrent.TimeUnit;
 
 /**
